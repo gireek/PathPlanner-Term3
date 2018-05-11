@@ -3,7 +3,7 @@ Self-Driving Car Engineer Nanodegree Program
 
 ### REFLECTION
 
-I started with help from the QNA video provided in the project module. 
+I started with help from the QNA video provided in the project module.The requirement is to output a list of x and y global map co-ordinates where each pair of x and y co-ordinates forms a trajectory which the car will follow. The smoothening of trajectory has been done by spline to handle jerks and accelerating to 50mph from a cold start. The logic behind the behaviour eventually comes down from line 250 where using the sensor fusion data we predict where the neighbouring cars in the lane will be and if we are at a safe distance of 30 meters from them. My code always tries a right lane shift first and if it is not successful in doing so it tries to make a left lane shift. This is governed by the behaviour of other cars in the same lane and if they are 20 meters ahead or behind you in the lane and the variable used is right_try to determine which lane to go to. The ref_vel was being decreased by 0.224 when too_close was activated by it may be rendered useless sometimes when a car changes lane in front of you abruptly and your car takes time to decelerate so I have increased it to 0.3 and acceleration factor has been decreased to 0.2 I have checked the result and it ran more than 12 miles without any incident.
    
 ### Simulator.
 You can download the Term3 Simulator which contains the Path Planning Project from the [releases tab (https://github.com/udacity/self-driving-car-sim/releases/tag/T3_v1.2).
